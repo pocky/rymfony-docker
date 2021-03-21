@@ -23,15 +23,22 @@ Rymfony has fewer functionalities than Symfony one but Rymfony is truly open sou
 
 For the moment, there are some problems with Rymfony through Docker:
 
+- sudo is required
 - User and group configuration
 - [Systemd detection](https://github.com/Orbitale/Rymfony/issues/72)
+- can't share uid/gid (?)
+
+I also need to check some points:
+
+- ca-certificate
+- ctrl+c stop server but *.pid files are not removed (because of volume?)
 
 ```bash
 docker run -it --rm \
 	--network="host" \
 	-v $(pwd):/usr/src/app \
 	-v $(pwd)/.rymfony:/root/.rymfony \
-	-w /usr/src/app rymfony:8 \
+	-w /usr/src/app rymfony:<version> \
 	rymfony <command>
 ```
 
