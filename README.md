@@ -16,7 +16,7 @@ Rymfony has fewer functionalities than Symfony one but Rymfony is truly open sou
 ## Installation
 
 - Clone this project
-- Go to `8.0` (or 7.4) and run `docker build - rymfony:<version> .`
+- Go to `8.0` (or 7.4) and run `docker build -t rymfony:<version> .`
 - Profit!
 
 ## Usage
