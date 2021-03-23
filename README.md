@@ -21,12 +21,12 @@ Rymfony has fewer functionalities than Symfony one but Rymfony is truly open sou
 
 ## Usage
 
-For the moment, there are some problems with Rymfony through Docker:
+For the moment, there are few problems with Rymfony through Docker:
 
-- sudo is required
-- User and group configuration
-- [Systemd detection](https://github.com/Orbitale/Rymfony/issues/72)
-- can't share uid/gid (?)
+- [sudo is required](https://github.com/Orbitale/Rymfony/issues/79)
+- [User and group configuration in fpm-conf.ini](https://github.com/Orbitale/Rymfony/issues/79) (related to root user)
+- can't share uid/gid (thread 'main' panicked with PermissionDenied on Result::unwrap in src/main.rs:65:55)
+- rymfony is killed with ctrl+c but can't restart (Error: server is already running)
 
 I also need to check some points:
 
@@ -44,11 +44,6 @@ docker run -it --rm \
 
 `rymfony server:start` will fail during the first run because of `fpm-conf.ini`.
 After this first (failed) run, go to `.rymfony` folder and edit `fpm-conf.ini`:
-
-Replace line 12 (add comment)
-```bash
-;systemd_interval = 0
-```
 
 Replace lines 17/18 (remove comment and change user/group)
 
